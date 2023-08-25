@@ -1,6 +1,7 @@
 package toy.com.entity;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 //NoArgsConstructor
 @Entity
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +27,5 @@ public class User {
     @Column(name = "stric")
     private Long stric;
     @Column(name = "created_time")
-    private Date createdTime;
+    private String createdTime;
 }
