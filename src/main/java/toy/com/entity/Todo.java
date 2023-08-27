@@ -12,6 +12,8 @@ import java.util.Date;
 @AllArgsConstructor
 //@NoArgsConstructor
 @Entity
+@Builder
+@ToString
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

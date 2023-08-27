@@ -13,6 +13,7 @@ import java.util.Date;
 //NoArgsConstructor
 @Entity
 @Builder
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
