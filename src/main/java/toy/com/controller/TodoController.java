@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import toy.com.entity.Todo;
 import toy.com.entity.User;
 import toy.com.serviceImpl.TodoServiceImpl;
+import toy.com.serviceImpl.UserServiceImpl;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -18,14 +19,15 @@ import java.util.List;
 @Slf4j
 public class TodoController {
     private final TodoServiceImpl todoServiceImpl;
+    private final UserServiceImpl userServiceImpl;
     @PostMapping("/todo")
     public ResponseEntity<Todo> createTodo(@RequestBody Todo todo){
         log.info("TODO ITEM : ",todo.toString());
         LocalDate now = LocalDate.now(ZoneId.of("Asia/Seoul"));
         Todo newTodo = Todo.builder()
-                .user(todo.getUser())
+                .user(userServiceImpl.selectUser(todo.getUser()))
                 .createdTime(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .done(true)
+                .done(todo.isDone())
                 .text(todo.getText())
                 .build();
         Todo createdTodo = todoServiceImpl.createTodo(newTodo);

@@ -21,7 +21,13 @@ public class UserController {
     private final UserServiceImpl userServiceImpl;
 
 
-
+    @PostMapping("/login")
+    public ResponseEntity<User> logIn(@RequestBody User user){
+        System.out.println(user.getUserId()+" "+user.getPassword());
+        User loginedUser = userServiceImpl.logIn(user);
+        System.out.println(loginedUser);
+        return ResponseEntity.ok(loginedUser);
+    }
     @PostMapping("/user")
     public ResponseEntity<User> insertUser(@RequestBody User user){
         LocalDate now = LocalDate.now(ZoneId.of("Asia/Seoul"));

@@ -6,4 +6,6 @@ import toy.com.entity.User;
 
 @Repository
 public interface UserRepository  extends JpaRepository<User,Long> {
+    User findByUserIdAndPassword(Long userid, String password);
+
 }

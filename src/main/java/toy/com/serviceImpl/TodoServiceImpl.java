@@ -8,14 +8,19 @@ import toy.com.entity.User;
 import toy.com.repository.TodoRepository;
 import toy.com.service.TodoService;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class TodoServiceImpl implements TodoService {
     private final TodoRepository todoRepository;
     @Override
     public Todo createTodo(Todo todo) {
+
         return todoRepository.save(todo);
     }
 
