@@ -26,7 +26,8 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public Long deleteTodo(Todo todo) {
-        return null;
+        todoRepository.deleteById(todo.getTodoId());
+        return 0l;
     }
 
     @Override

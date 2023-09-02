@@ -2,6 +2,7 @@ package toy.com.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import toy.com.entity.Todo;
@@ -37,5 +38,11 @@ public class TodoController {
     public ResponseEntity<List<Todo>> selectAllTodo(@PathVariable("userId")Long userId){
         List<Todo> todoList = todoServiceImpl.selectAllTodo(User.builder().userId(userId).build());
         return ResponseEntity.ok(todoList);
+    }
+    @ResponseStatus(HttpStatus.SEE_OTHER)
+    @DeleteMapping("/todo/{todoId}")
+    public ResponseEntity<Long> deleteTodo(@PathVariable Long todoId){
+        System.out.println(todoId);
+        return ResponseEntity.ok(todoServiceImpl.deleteTodo(Todo.builder().todoId(todoId).build()));
     }
 }
