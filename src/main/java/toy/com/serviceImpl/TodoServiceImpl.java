@@ -34,4 +34,9 @@ public class TodoServiceImpl implements TodoService {
     public List<Todo> selectAllTodo(User user) {
         return todoRepository.findByUser(user);
     }
+
+    @Override
+    public List<Todo> selectDailyTodo(User user, String date) {
+        return todoRepository.findByUserAndCreatedTime(user,date);
+    }
 }

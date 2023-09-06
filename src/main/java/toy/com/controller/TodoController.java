@@ -39,6 +39,11 @@ public class TodoController {
         List<Todo> todoList = todoServiceImpl.selectAllTodo(User.builder().userId(userId).build());
         return ResponseEntity.ok(todoList);
     }
+    @GetMapping("/todo/{userId}/{createdDate}")
+    public ResponseEntity<List<Todo>> selectDailyTodo(@PathVariable("userId")Long userId, @PathVariable("createdDate") String date){
+        List<Todo> todoList = todoServiceImpl.selectDailyTodo(User.builder().userId(userId).build(),date);
+        return ResponseEntity.ok(todoList);
+    }
     @ResponseStatus(HttpStatus.SEE_OTHER)
     @DeleteMapping("/todo/{todoId}")
     public ResponseEntity<Long> deleteTodo(@PathVariable Long todoId){

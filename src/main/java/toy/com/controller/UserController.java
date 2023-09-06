@@ -31,7 +31,6 @@ public class UserController {
     @PostMapping("/user")
     public ResponseEntity<User> insertUser(@RequestBody User user){
         LocalDate now = LocalDate.now(ZoneId.of("Asia/Seoul"));
-
         System.out.println(now);
         User newUser = User.builder()
                 .stric(0L)

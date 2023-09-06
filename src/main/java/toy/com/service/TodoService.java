@@ -9,4 +9,5 @@ public interface TodoService {
     Todo createTodo(Todo todo);
     Long deleteTodo(Todo todo);
     List<Todo> selectAllTodo(User user);
+    List<Todo> selectDailyTodo(User user,String date);
 }
